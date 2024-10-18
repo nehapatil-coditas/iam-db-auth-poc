@@ -19,10 +19,10 @@ const getRDSAuthToken = async (host, port, username, region) => {
 };
 
 const connectToDatabase = async () => {
-  const host = 'codilytics-prod-db.chceaoeymn3s.ap-south-1.rds.amazonaws.com'; // Replace with your DB host
+  const host = 'prod-codilytics-db.ctkuw0i8gtw8.us-east-1.rds.amazonaws.com'; // Replace with your DB host
   const port = 5432; // Default PostgreSQL port
-  const username = 'postgres'; // Replace with your DB username
-  const region = 'ap-south-1'; // Replace with your AWS region
+  const username = 'neha'; // Replace with your DB username
+  const region = 'us-east-1'; // Replace with your AWS region
 
   const token = await getRDSAuthToken(host, port, username, region);
 
