@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DB Connection Tester</title>
+</head>
+<body>
+  <h2>Database Connection and Query Test</h2>
+  <button id="testButton">Test DB Connection</button>
+  <p id="result"></p>
+
+  <script>
+    const button = document.getElementById('testButton');
+    const result = document.getElementById('result');
+    let clickCount = 0;
+    let startTime = null;
+
+    button.addEventListener('click', async () => {
+      clickCount++;
+      if (!startTime) {
+        startTime = Date.now();
+      }
+
+      // Calculate elapsed time
+      const elapsedTime = (Date.now() - startTime) / 1000; // Convert to seconds
+      if (elapsedTime <= 60) {
+        result.innerHTML = `You clicked the button ${clickCount} times in ${Math.floor(elapsedTime)} seconds.`;
+
+        try {
+          const response = await fetch('http://localhost:3000/test-db'); // Replace with your backend endpoint
+          const data = await response.json();
+          console.log('DB Test Response:', data);
+        } catch (error) {
+          console.error('Error fetching from the backend:', error);
+        }
+      } else {
+        result.innerHTML = `Test complete: You clicked the button ${clickCount} times in 1 minute.`;
+        button.disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>
