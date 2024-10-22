@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 
 // Enable CORS
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 app.get('/test-db', async (req, res) => {
     let dbClient;
@@ -30,6 +30,6 @@ app.get('/test-db', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
