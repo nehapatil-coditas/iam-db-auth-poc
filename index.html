@@ -10,7 +10,7 @@
   <h2>Database Connection and Query Test</h2>
   <button id="testButton">Test DB Connection</button>
   <p id="result"></p>
-  <div id="dataDisplay"></div> <!-- This will display the backend data -->
+  <div id="dataDisplay"></div> <!-- Add this line to display the backend data -->
 
   <script>
     const button = document.getElementById('testButton');
@@ -31,7 +31,7 @@
         result.innerHTML = `You clicked the button ${clickCount} times in ${Math.floor(elapsedTime)} seconds.`;
 
         try {
-          const response = await fetch('http://your-ec2-public-ip:3000/test-db'); // Replace with your backend endpoint
+          const response = await fetch('http://44.222.181.123:3001/test-db'); // Replace with your backend endpoint
           const data = await response.json();
           console.log('DB Test Response:', data);
 
